@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 export default function Home() {
     const [arr, setArr] = useState([])
+
     // const apiHandle = axios.create({
 
     //     baseURL: 'https://api.covidtracking.com/v1/states/current.json'
@@ -21,6 +22,7 @@ export default function Home() {
                 console.log(res.data[i].state)
                 arr.push(res.data[i].state)
                 setArr(arr)
+                
 
             }
             console.log(arr)
@@ -67,7 +69,9 @@ export default function Home() {
                     </ul>
                 </div>
             </div>
+            
 
+                        
         </>
     )
 }
