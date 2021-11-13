@@ -22,7 +22,7 @@ export default function AppRouter() {
        
         <Routes>
           
-          <Route path="/" element={<Home/>}>
+          <Route index path="/" element={<Home/>}>
             
           </Route>
           <Route path="/display" element={<Display/>}>

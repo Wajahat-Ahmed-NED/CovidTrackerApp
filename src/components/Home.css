@@ -3,3 +3,6 @@ h2{
     margin: 8px;
     color: whitesmoke;
 }
+li{
+    cursor: pointer;
+}

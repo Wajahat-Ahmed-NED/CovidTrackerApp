@@ -2,27 +2,50 @@ import React from 'react'
 import Navbar from './Navbar'
 import './Home.css'
 import axios from 'axios'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router'
 export default function Home() {
     const [arr, setArr] = useState([])
-    const apiHandle=axios.create({
-        
-        baseURL:'https://api.covidtracking.com/v1/states/current.json'
-    })
-    const getData=()=>{
-        apiHandle.get('/').then((response)=>{
+    // const apiHandle = axios.create({
+
+    //     baseURL: 'https://api.covidtracking.com/v1/states/current.json'
+    // })
+    const getData = () => {
+        // apiHandle.get("/").then((e)=>{
+        //     console.log(e.data)
+        const api = 'https://api.covidtracking.com/v1/states/current.json';
+        axios.get(api).then((res) => {
+            console.log(res.data);
+            
             for(let i=0;i<56;i++){
-                console.log(response.data[i].state)
-                arr.push(response.data[i].state)
+                console.log(res.data[i].state)
+                arr.push(res.data[i].state)
                 setArr(arr)
 
             }
             console.log(arr)
+        }).catch((err) => {
+            console.log("Following error occured " + err)
         })
+        
     }
     useEffect(() => {
-        getData()
-    }, [])
+        getData() 
+        
+    },[])
+    console.log(arr)
+    const navigate=useNavigate()
+
+    const move=(item)=>{
+        console.log(item)
+        // document.write(`<h1>${item}</h1>`)
+
+        let obj = {
+            val: item,
+          };
+          navigate("/display", { state: obj });
+          
+    }
     return (
         <>
             <Navbar />
@@ -32,8 +55,15 @@ export default function Home() {
                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                         Select State                    </button>
                     <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                        {arr.map((e,i)=><li><a className="dropdown-item " key={i}>{e}</a></li>)}
-                         
+                        {
+
+                        
+                        arr.map((e, i) => {return <li key={i} style={{backgroundColor:'black'}}
+                        ><a className="dropdown-item " onClick={()=>{move(arr[i])}
+                        
+                        } >{e}</a></li>})
+                        }
+
                     </ul>
                 </div>
             </div>
