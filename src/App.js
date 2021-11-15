@@ -9,6 +9,7 @@ function App() {
     <>
     <AppRouter/>
     <hr/>
+    <h1>Statistics Of Covid In United States</h1>
     <Barchart />
     
     </>
