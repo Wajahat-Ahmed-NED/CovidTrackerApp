@@ -48,6 +48,34 @@ export default function Home() {
           navigate("/display", { state: obj });
           
     }
+    const [hospitalized, setHospitalized] = useState()
+    const [deaths, setDeaths] = useState()
+    const [recovered, setRecovered] = useState()
+    const [positive, setPositive] = useState()
+    const [negative, setnegative] = useState()
+    const fined=()=>{
+        let a={
+            name:'wajaht',
+            age:23
+        }
+        console.log(Object.keys(a))
+        for (let i=0;i<56;i++){
+            console.log(res.data[i].hospitalize)
+                hospitalized+=res.data[i].hospitalize
+                setHospitalized(hospitalized)
+
+                deaths+=res.data[i].hospitalize
+                setDeaths(deaths)
+
+                recovered+=res.data[i].hospitalize
+                setRecovered(recovered)
+                positive+=res.data[i].hospitalize
+                setPositive(positive)
+                negative+=res.data[i].hospitalize
+                setnegative(negative)
+        }
+    }
+    fined()
     return (
         <>
             <Navbar />
