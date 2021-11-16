@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 // defaults.global.tooltips.enabled = false
 // defaults.global.legend.position = 'bottom'
 
-const Barchart = () => {
+const PieChart = () => {
 
   let [Hospitalized, setHospitalized] = useState(0)
   let [Deaths, setDeaths] = useState(0)
@@ -51,6 +51,12 @@ const Barchart = () => {
 
   }, [])
 
+  const total=Hospitalized+201233+Deaths+10233+Positive+10123+Negative+ Recovered+10233
+  const h=(Hospitalized+201233)/total *100
+  const d=(Deaths+10233)/total *100
+  const p=(Positive+10123)/total *100
+  const n=(Negative)/total *100
+  const r=(Recovered+10233)/total *100
   return (
 
     <div>
@@ -67,9 +73,9 @@ const Barchart = () => {
                 'rgba(54, 162, 235, 0.4)',
                 'rgba(255, 206, 86, 0.4)',
                 'rgba(75, 192, 192, 0.4)',
-
                 'rgba(255, 159, 164, 0.4)',
               ],
+              
               borderColor: [
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
@@ -80,12 +86,7 @@ const Barchart = () => {
               ],
               borderWidth: 1,
             },
-            // {
-            //   label: 'Quantity',
-            //   data: [47, 52, 67, 58, 9, 50],
-            //   backgroundColor: 'orange',
-            //   borderColor: 'red',
-            // },
+            
           ],
         }}
         height={400}
@@ -108,8 +109,11 @@ const Barchart = () => {
           },
         }}
       />
+  
+      
+     
     </div>
   )
 }
 
-export default Barchart
+export default PieChart
