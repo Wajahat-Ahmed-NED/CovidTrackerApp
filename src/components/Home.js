@@ -23,7 +23,7 @@ export default function Home() {
             console.log(res.data);
 
             for (let i = 0; i < 56; i++) {
-                console.log(res.data[i].articles)
+                console.log(res.data[i].state)
                 arr.push(res.data[i].state)
                 setArr(arr)
 
